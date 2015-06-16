@@ -8,11 +8,13 @@
             zoom: 13,
             zoomControl: true,
             mapTypeControl: false,
-            streetViewControl: false,
+            isDraggable: false,
             randomId: true,
             markerIcon: '',
             tooltip: false,
             scrollwheel: false,
+            draggable: true,
+            disableDraggableFrom: false,
             styles: false
         };
     // The actual plugin constructor
@@ -56,7 +58,8 @@
             this.addMarker();
         },
         renderMap: function () {
-            var mapOptions = {
+            var that = this,
+                mapOptions = {
                     zoom: this.settings.zoom,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     navigationControlOptions: {
@@ -66,10 +69,16 @@
                     mapTypeControl: this.settings.mapTypeControl,
                     scrollwheel: this.settings.scrollwheel,
                     zoomControl: this.settings.zoomControl,
+                    draggable: this.settings.draggable,
                     styles: this.settings.styles
                 };
             this.mapLocation = new google.maps.LatLng(this.settings.lat, this.settings.lng);
             this.map = new google.maps.Map(document.getElementById(this.element.id), $.extend(mapOptions, { center: this.mapLocation }));
+            if (this.settings.draggable && that.settings.disableDraggableFrom) {
+                $(window).on('resize orientationchange', function () {
+                    that.map.set('draggable', !($(window).width() < that.settings.disableDraggableFrom));
+                });
+            }
         },
         enableTooltips: function () {
             if (this.settings.tooltip) {

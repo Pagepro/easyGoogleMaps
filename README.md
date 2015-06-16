@@ -73,6 +73,20 @@ default: false
 options: array
 ```
 
+**draggable**
+Enable touch gestures
+```
+default: true
+options: bool
+```
+
+**disableDraggableFrom**
+Disable touch gestures when window width is smaller than
+```
+default: false
+options: int
+```
+
 ##Alternative configuration
 
 You can pass configuration options in data attribute of map container element:
