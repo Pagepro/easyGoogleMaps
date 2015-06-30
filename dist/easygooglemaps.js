@@ -1,4 +1,5 @@
 /*globals jQuery, google, document */
+/*globals jQuery, google, document */
 (function ($) {
     "use strict";
     var pluginName  =   "easyGoogleMaps",
@@ -15,7 +16,9 @@
             scrollwheel: false,
             draggable: true,
             disableDraggableFrom: false,
-            styles: false
+            styles: false,
+            centerLat: null,
+            centerLng: null
         };
     // The actual plugin constructor
     function Plugin(element, options) {
@@ -73,7 +76,11 @@
                     styles: this.settings.styles
                 };
             this.mapLocation = new google.maps.LatLng(this.settings.lat, this.settings.lng);
-            this.map = new google.maps.Map(document.getElementById(this.element.id), $.extend(mapOptions, { center: this.mapLocation }));
+            this.centerLocation = this.mapLocation;
+            if (this.settings.centerLat && this.settings.centerLng) {
+                this.centerLocation =  new google.maps.LatLng(this.settings.centerLat, this.settings.centerLng);
+            }
+            this.map = new google.maps.Map(document.getElementById(this.element.id), $.extend(mapOptions, { center: this.centerLocation }));
             if (this.settings.draggable && that.settings.disableDraggableFrom) {
                 $(window).on('resize orientationchange', function () {
                     that.map.set('draggable', !($(window).width() < that.settings.disableDraggableFrom));
