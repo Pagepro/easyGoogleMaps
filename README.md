@@ -87,6 +87,13 @@ default: false
 options: int
 ```
 
+**onResize**
+Callback fired on window resize or orientation change event.
+```
+default: false
+options: function (map, google){ // your code here }
+```
+
 ##Alternative configuration
 
 You can pass configuration options in data attribute of map container element:

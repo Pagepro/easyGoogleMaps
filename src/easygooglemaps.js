@@ -1,5 +1,4 @@
 /*globals jQuery, google, document */
-/*globals jQuery, google, document */
 (function ($) {
     "use strict";
     var pluginName  =   "easyGoogleMaps",
@@ -30,6 +29,7 @@
         this.settings       =   $.extend({}, defaults, this.options, this.metadata);
         this.map            =   null;
         this.init();
+        return this;
     }
     Plugin.prototype = {
         init: function () {
@@ -60,7 +60,13 @@
             this.renderMap();
             this.enableTooltips();
             this.addMarker();
-            this.bindEvents();
+            this.onResizeCallback();
+        },
+        onResizeCallback: function () {
+            var that = this;
+            $(window).on('resize orientationchange', function () {
+                that.settings.onResize(that.map, google);
+            });
         },
         renderMap: function () {
             var that = this,
@@ -83,6 +89,11 @@
                 this.centerLocation =  new google.maps.LatLng(this.settings.centerLat, this.settings.centerLng);
             }
             this.map = new google.maps.Map(document.getElementById(this.element.id), $.extend(mapOptions, { center: this.centerLocation }));
+            if (this.settings.draggable && that.settings.disableDraggableFrom) {
+                $(window).on('resize orientationchange', function () {
+                    that.map.set('draggable', !($(window).width() < that.settings.disableDraggableFrom));
+                });
+            }
         },
         enableTooltips: function () {
             if (this.settings.tooltip) {
@@ -109,15 +120,6 @@
             var randomLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26)),
                 randomNumber = Date.now();
             return randomLetter + '-' + randomNumber;
-        },
-        bindEvents: function () {
-            var that = this;
-            $(window).on('resize orientationchange', function () {
-                if (that.settings.draggable && that.settings.disableDraggableFrom) {
-                    that.map.set('draggable', !($(window).width() < that.settings.disableDraggableFrom));
-                    that.settings.onResize(that.map, google);
-                }
-            });
         }
     };
     $.fn[pluginName] = function (options) {
