@@ -29,30 +29,66 @@
       </header>
       <section>
         <h1 class="main-title">EasyGoogleMaps plugin examples</h1>
-        <div class="box">
-        	<h3 class="box-title">Example 1</h3>
-        	<p class="desc">Default options</p>
-        	<div class="map-wrap" id="map-wrap-1"></div>
+        <div class="container">
+          <div class="box">
+        	 <h3 class="box-title">Example 1</h3>
+        	 <p class="desc">Default options</p>
+        	 <div class="map-wrap" id="map-wrap-1"></div>
+          </div>
+        <div class="code-block">
+              <p><span class="desc-pink">$</span>(<span class="desc-yellow">'#map-wrap-1'</span>).easyGoogleMaps();</p>
+          </div>
         </div>
-         <div class="box">
-        	<h3 class="box-title">Example 2</h3>
-        	<p class="desc">Set up latitude on 35.276816, longitude on 37.848346 and zoom on 5. </p>
-        	<div class="map-wrap" id="map-wrap-2"></div>
+         <div class="container">
+          <div class="box">
+        	 <h3 class="box-title">Example 2</h3>
+        	 <p class="desc">Set up latitude on 35.276816, longitude on 37.848346 and zoom on 5. </p>
+        	 <div class="map-wrap" id="map-wrap-2"></div>
+          </div>
+        <div class="code-block">
+              <p><span class="desc-pink">$</span>(<span class="desc-yellow">'#map-wrap-2'</span>).easyGoogleMaps(<br>
+              lat: <span class="desc-purple">35.276816</span>,<br>
+              lng: <span class="desc-purple">37.848346</span>,<br>
+              zoom: <span class="desc-purple">5</span>,<br>
+
+              );</p>
+          </div>
         </div>
-        <div class="box">
-        	<h3 class="box-title">Example 3</h3>
-        	<p class="desc">Sets up visible tooltip after clicking on map marker. </p>
-        	<div class="map-wrap" id="map-wrap-3"></div>
+        <div class="container">
+          <div class="box">
+        	 <h3 class="box-title">Example 3</h3>
+        	 <p class="desc">Sets up visible tooltip after clicking on map marker. </p>
+        	 <div class="map-wrap" id="map-wrap-3"></div>
+          </div>
+        <div class="code-block">
+              <p><span class="desc-pink">$</span>(<span class="desc-yellow">'#map-wrap-3'</span>).easyGoogleMaps(<br>
+              tooltip: <span class="desc-yellow">'Your customize tooltip value'</span><br>
+              );</p>
+          </div>
         </div>
-        <div class="box">
-        	<h3 class="box-title">Example 4</h3>
-        	<p class="desc">Sets up styles of map array.</p>
-        	<div class="map-wrap" id="map-wrap-4"></div>
+        <div class="container">
+          <div class="box">
+        	   <h3 class="box-title">Example 4</h3>
+        	   <p class="desc">Sets up styles of map array.</p>
+        	   <div class="map-wrap" id="map-wrap-4"></div>
+          </div>
+          <div class="code-block">
+            <p><span class="desc-pink">$</span>(<span class="desc-yellow">'#map-wrap-4'</span>).easyGoogleMaps(<br>
+            <span class="desc-yellow">styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]</span>
+            );</p>
+          </div>
         </div>
-         <div class="box">
-        	<h3 class="box-title">Example 5</h3>
-        	<p class="desc">Sets up disable to draggable map.</p>
-        	<div class="map-wrap" id="map-wrap-5"></div>
+         <div class="container">
+          <div class="box">
+        	 <h3 class="box-title">Example 5</h3>
+        	 <p class="desc">Sets up disable to draggable map.</p>
+        	 <div class="map-wrap" id="map-wrap-5"></div>
+          </div>
+         <div class="code-block">
+              <p><span class="desc-pink">$</span>(<span class="desc-yellow">'#map-wrap-5'</span>).easyGoogleMaps(<br>
+              draggable: <span class="desc-purple">false</span>,<br>
+              );</p>
+          </div>
         </div>
       </section>
       <footer>
@@ -70,7 +106,7 @@
 	  $('#map-wrap-1').easyGoogleMaps();
 	  $('#map-wrap-2').easyGoogleMaps(
 	  	{
-	  		lat: 35.276816,
+	  		    lat: 35.276816,
             lng: 37.848346,
             zoom: 5,
 	  	});
